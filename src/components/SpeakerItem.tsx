@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Session } from '../models/Session';
 import { Speaker } from '../models/Speaker';
 import { IonCard, IonCardHeader, IonItem, IonAvatar, IonCardContent, IonList, IonRow, IonCol, IonButton, IonIcon, IonActionSheet } from '@ionic/react';
-import { logoTwitter, shareAlt, chatboxes } from 'ionicons/icons';
+import { logoTwitter, shareOutline, chatboxOutline} from 'ionicons/icons';
 import { ActionSheetButton } from '@ionic/core';
 
 interface SpeakerItemProps {
@@ -100,13 +100,13 @@ const SpeakerItem: React.FC<SpeakerItemProps> = ({ speaker, sessions }) => {
           </IonCol>
           <IonCol text-left size="4">
             <IonButton fill="clear" size="small" color="primary" onClick={() => openSpeakerShare(speaker)}>
-              <IonIcon slot="start" icon={shareAlt} />
+              <IonIcon slot="start" icon={shareOutline} />
               Share
           </IonButton>
           </IonCol>
           <IonCol text-left size="4">
             <IonButton fill="clear" size="small" color="primary" onClick={() => openContact(speaker)}>
-              <IonIcon slot="start" icon={chatboxes} />
+              <IonIcon slot="start" icon={chatboxOutline} />
               Contact
           </IonButton>
           </IonCol>

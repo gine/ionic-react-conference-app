@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonButton, IonIcon, IonDatetime, IonSelectOption, IonList, IonItem, IonLabel, IonSelect, IonPopover } from '@ionic/react';
 import './About.scss';
-import { calendar, pin, more } from 'ionicons/icons';
+import { calendar, pin, ellipsisHorizontal } from 'ionicons/icons';
 import AboutPopover from '../components/AboutPopover';
 
 interface AboutProps { }
@@ -10,6 +10,7 @@ const About: React.FC<AboutProps> = () => {
 
   const [showPopover, setShowPopover] = useState(false);
   const [popoverEvent, setPopoverEvent] = useState();
+  const [country, setCountry] = useState<string>('madison');
 
   const presentPopover = (e: React.MouseEvent) => {
     setPopoverEvent(e.nativeEvent);
@@ -27,7 +28,7 @@ const About: React.FC<AboutProps> = () => {
           <IonTitle>About</IonTitle>
           <IonButtons slot="end">
             <IonButton icon-only onClick={presentPopover}>
-              <IonIcon slot="icon-only" icon={more}></IonIcon>
+              <IonIcon slot="icon-only" icon={ellipsisHorizontal}></IonIcon>
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -50,8 +51,8 @@ const About: React.FC<AboutProps> = () => {
             <IonItem>
               <IonIcon icon={pin} slot="start"></IonIcon>
               <IonLabel position="stacked">Location</IonLabel>
-              <IonSelect>
-                <IonSelectOption value="madison" selected>Madison, WI</IonSelectOption>
+              <IonSelect value={country} placeholder="Select One" onIonChange={e => setCountry(e.detail.value)}>
+                <IonSelectOption value="madison">Madison, WI</IonSelectOption>
                 <IonSelectOption value="austin">Austin, TX</IonSelectOption>
                 <IonSelectOption value="chicago">Chicago, IL</IonSelectOption>
                 <IonSelectOption value="seattle">Seattle, WA</IonSelectOption>
